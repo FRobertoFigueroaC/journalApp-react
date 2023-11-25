@@ -12,13 +12,19 @@ import {startGoogleSignIn, startLogIn} from "../../store/auth";
 const formValidations = {
   email: [
     (value) => Boolean(value.match(/[^\s@]+@[^\s@]+\.[^\s@]+/)),
-    'El email debe ser una dirección válida.'
+    'The email must be a valid email address.'
   ],
   password: [
     (value) => Boolean(value.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&^])[A-Za-z\d@.#$!%*?&]{8,15}$/)),
-    'La contraseña debe ser mayor a 5 caracteres y contener al menos un número y un caracter especial (!@#$%^&*).'
+    "The password must be at least 8 characters and must contain at least un number and one special character!@#$%^&*)."
   ]
-}
+};
+const formData = {
+  email: 'roberto-upiita@hotmail.com',
+  password:'Ab12345!',
+  // email: '',
+  // password:'',
+};
 
 export const LoginPage = () => {
 
@@ -30,14 +36,11 @@ export const LoginPage = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
 
 
+
   const {
      email, password, onInputChange,
     isFormValid, emailValid, passwordValid
-  } = useForm({
-    email: 'roberto-upiita@hotmail.com',
-    password:'Ab12345!',
-
-  },formValidations);
+  } = useForm(formData,formValidations);
 
   const onSubmit = (event) => {
     event.preventDefault();

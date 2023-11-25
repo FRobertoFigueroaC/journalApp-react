@@ -11,17 +11,26 @@ import { useMemo, useState } from "react"
 const formValidations = {
   email: [
     (value) => Boolean(value.match(/[^\s@]+@[^\s@]+\.[^\s@]+/)),
-    'El email debe ser una dirección válida.'
+    'The email must be a valid email address.'
   ],
   password: [
     (value) => Boolean(value.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&^])[A-Za-z\d@.#$!%*?&]{8,15}$/)),
-    'La contraseña debe ser mayor a 5 caracteres y contener al menos un número y un caracter especial (!@#$%^&*).'
+    "The password must be at least 8 characters and must contain at least un number and one special character!@#$%^&*)."
   ],
   displayName: [
     value => value.length >= 2,
-    "El nombre debe ser mayor a 1 caracter"
+    "The displayName must be at least 20 characters."
   ],
-}
+};
+
+const formData ={
+  // email: '',
+  // displayName: '',
+  // password:'',
+  email: 'roberto-upiita@hotmail.com',
+  displayName: 'Roberto',
+  password:'Ab12345!',
+};
 
 export const RegisterPage = () => {
 
@@ -32,11 +41,7 @@ export const RegisterPage = () => {
   const {
     formState, email, password, displayName, onInputChange,
     isFormValid, emailValid, displayNameValid, passwordValid
-  } = useForm({
-    email: 'roberto-upiita@hotmail.com',
-    displayName: 'Roberto',
-    password:'Ab12345!',
-  }, formValidations);
+  } = useForm(formData, formValidations);
 
 
   const { status, errorMessage } = useSelector(state => state.auth)

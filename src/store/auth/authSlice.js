@@ -40,4 +40,4 @@ export const {
   checkingCredentials
 } = authSlice.actions;
 
-export default authSlice.actions
+// export default authSlice.actions
