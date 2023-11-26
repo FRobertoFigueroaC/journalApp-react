@@ -24,11 +24,8 @@ const formValidations = {
 };
 
 const formData ={
-  // email: '',
-  // displayName: '',
-  // password:'',
-  email: 'roberto-upiita@hotmail.com',
-  displayName: 'Roberto',
+  email: 'journal-test-usera@mail.com',
+  displayName: 'Tester',
   password:'Ab12345!',
 };
 

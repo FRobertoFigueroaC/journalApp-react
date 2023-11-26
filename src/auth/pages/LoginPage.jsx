@@ -20,7 +20,7 @@ const formValidations = {
   ]
 };
 const formData = {
-  email: 'roberto-upiita@hotmail.com',
+  email: 'journal-test-usera@mail.com',
   password:'Ab12345!',
   // email: '',
   // password:'',
