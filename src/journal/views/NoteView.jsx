@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 
-import { SaveOutlined, UploadOutlined } from "@mui/icons-material"
+import { DeleteOutline, SaveOutlined, UploadOutlined } from "@mui/icons-material"
 import { Button, Grid, TextField, Typography, IconButton } from "@mui/material"
 import Swal from 'sweetalert2'
 import 'sweetalert2/dist/sweetalert2.css'
@@ -9,7 +9,7 @@ import 'sweetalert2/dist/sweetalert2.css'
 import { ImageGallery } from "../components"
 
 import { useForm } from '../../hooks/useForm';
-import { setActiveNote, startSaveNote, startUploadingFiles } from "../../store/journal";
+import { setActiveNote, startSaveNote, startUploadingFiles, startDeletingNote } from "../../store/journal";
 
 
 
@@ -71,6 +71,17 @@ export const NoteView = () => {
     );
   }
 
+  const onDelete = () => {
+   dispatch(startDeletingNote());
+   Swal.fire(
+    { 
+      title: "Deleted!",
+      text: 'The note has been deleted successfully.',
+      icon: "success",
+    }
+  );
+  }
+
   const fileInputRef = useRef();
 
   return (
@@ -124,6 +135,15 @@ export const NoteView = () => {
                         onChange={onInputChange}
                         name="body"
                         />
+
+          </Grid>
+          <Grid container justifyContent='end'>
+            <Button color="error"
+                    onClick={onDelete}
+                    sx={{mt:2}}>
+              <DeleteOutline/>
+              Borrar
+            </Button>
 
           </Grid>
 

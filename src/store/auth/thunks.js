@@ -5,6 +5,7 @@ import {
   loginUser,
   logoutUser
 } from "../../firebase/providers";
+import { clearNotesLogout } from "../journal";
 
 
 const handleResponse = (dispatch, result) => {
@@ -47,6 +48,7 @@ export const startLogIn = ({email, password}) => {
 export const startLogout = () => {
   return async (dispatch) => {
     await logoutUser();
+    dispatch(clearNotesLogout());
     dispatch(logout());
   }
 }
