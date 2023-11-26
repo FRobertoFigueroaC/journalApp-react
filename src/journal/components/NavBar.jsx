@@ -1,31 +1,36 @@
-import { MenuOutlined, LogoutOutlined } from "@mui/icons-material"
-import { AppBar, Grid, IconButton, Toolbar, Typography } from "@mui/material"
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { LogoutOutlined, MenuOutlined } from "@mui/icons-material"
+import { AppBar, Grid, IconButton, Toolbar, Typography, Button } from "@mui/material"
 import { startLogout } from "../../store/auth";
+import { toggleMenu } from "../../store/ui";
 
 // const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
 
-export const NavBar = ({drawerWidth = 240}) => {
+export const NavBar = () => {
     const dispatch = useDispatch();
+    const { drawerWidth } = useSelector(state => state.ui);
     const onLogout = () => {
         dispatch(startLogout());
+    }
+    const onMenuClick = () => {
+     dispatch(toggleMenu())
     }
   return (
     <>
       <AppBar component='header'
           position='fixed'
           sx={{ 
-              width: { sm: `calc(100% - ${ drawerWidth }px)` },
+              width: { md: `calc(100% - ${ drawerWidth }px)` },
               ml: { sm: `${ drawerWidth }px` }
-          }}
-      >
+          }}>
           <Toolbar>
               <IconButton
                   color='inherit'
                   edge="start"
-                  sx={{ mr: 2, display: { sm: 'none' } }}
-              >
+                  sx={{ mr: 2}}
+                  onClick={onMenuClick}
+                  >
                   <MenuOutlined />
               </IconButton>
 

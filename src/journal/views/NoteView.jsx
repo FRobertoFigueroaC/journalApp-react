@@ -142,7 +142,7 @@ export const NoteView = () => {
                     onClick={onDelete}
                     sx={{mt:2}}>
               <DeleteOutline/>
-              Borrar
+              Delete
             </Button>
 
           </Grid>

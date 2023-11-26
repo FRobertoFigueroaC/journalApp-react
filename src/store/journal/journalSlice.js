@@ -46,7 +46,6 @@ export const journalSlice = createSlice({
           state.isSaving = false;
         },
         clearNotesLogout: (state) => {
-          console.log('clearNotesLogout');
           state.isSaving = false;
           state.savedMessage = '';
           state.notes = [];
